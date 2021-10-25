@@ -1,0 +1,19 @@
+{
+  "version": "v1",
+  "packages": {
+    "@mooyaho/server-sdk": {
+      "version": "1.0.0-alpha.2",
+      "signature": "28b0171a175e390e279ed5a3239d2bcf",
+      "file": true
+    },
+    "mooyaho/server-sdk": {
+      "version": "1.0.0",
+      "signature": "9b8919a41a659c44d3f36acf5352c4f9",
+      "file": true
+    },
+    "mooyaho-server-sdk": {
+      "signature": "413ea1d207cce8b6164590348201ab2a",
+      "file": true
+    }
+  }
+}

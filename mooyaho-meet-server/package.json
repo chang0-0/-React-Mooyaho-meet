@@ -8,8 +8,10 @@
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "fastify": "^3.22.1",
+    "fastify-plugin": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "yalc": "^1.0.0-pre.53"
   },
   "scripts": {
     "start": "node main.js",

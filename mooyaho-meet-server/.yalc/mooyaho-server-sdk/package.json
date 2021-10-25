@@ -1,0 +1,17 @@
+{
+  "name": "mooyaho-server-sdk",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "/dist"
+  ],
+  "yalcSig": "413ea1d207cce8b6164590348201ab2a"
+}

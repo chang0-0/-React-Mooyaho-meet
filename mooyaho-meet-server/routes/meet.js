@@ -1,4 +1,5 @@
 const fastify = require('fastify')
+
 /**
  * @param {fastify.FastifyInstance} fastify
  * */

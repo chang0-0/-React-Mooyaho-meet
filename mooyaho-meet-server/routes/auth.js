@@ -28,7 +28,7 @@ async function authRouter(fastify) {
         username: true,
       },
     })
-    const token = await generateToken({ user }, { maxAge: '30d' })
+    const token = await generateToken({ user }, { expiresIn: '30d' })
     return { ...user, token }
   })
   fastify.post('/login', async (request, reply) => {
@@ -42,7 +42,7 @@ async function authRouter(fastify) {
     const isMatch = await bcrypt.compare(password, user.passwordHash)
     if (isMatch) {
       const { id, username } = user
-      const token = await generateToken({ user }, { maxAge: '30d' })
+      const token = await generateToken({ user }, { expiresIn: '30d' })
       return { id, username, token }
     }
     reply.status(401)
