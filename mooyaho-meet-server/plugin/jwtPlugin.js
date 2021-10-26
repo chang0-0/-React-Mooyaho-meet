@@ -11,7 +11,7 @@ const jwtPlugin = fp(
       try {
         console.log(token)
         const decoded = await verifyToken(token, process.env.JWT_SECRET)
-        request.user = decoded
+        request.user = decoded.user
       } catch (e) {
         console.error(e)
       }

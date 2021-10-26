@@ -22,4 +22,7 @@ generator client {
   user   User?    @relation(fields: [userId], references: [id])   
   userId Int?   
   chennelId String
+  code String @unique
+  
+  @@index([code])
  }
