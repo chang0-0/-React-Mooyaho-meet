@@ -1,21 +1,20 @@
 const { default: fastify } = require('fastify')
 const { default: fp } = require('fastify-plugin')
+const { verifyToken } = require('../lib/tokens')
 
 const jwtPlugin = fp(
-  async (fastify) => {
+  async (fastify, opts) => {
+    fastify.decorateRequest('user', null)
     fastify.addHook('preHandler', async (request, reply) => {
       const token = request.headers['authorization']?.split('Bearer ')[1]
-      if (!token) {
-        fastify.decorate('user', null)
-      } else {
-        try {
-          const decoded = await jwt.verify(token, process, env, JWT_SECRET)
-          fastify.decorate('user', decoded)
-        } catch (e) {
-          fastify.decorate('user', null)
-        }
+      if (!token) return
+      try {
+        console.log(token)
+        const decoded = await verifyToken(token, process.env.JWT_SECRET)
+        request.user = decoded
+      } catch (e) {
+        console.error(e)
       }
-      console.log(token)
     })
   },
   {

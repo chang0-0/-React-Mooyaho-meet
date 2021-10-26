@@ -6,7 +6,7 @@ const fastify = require('fastify')
 
 async function meRouter(fastify) {
   fastify.get('/', (request, reply) => {
-    return request.user.username
+    return request.user
   })
 }
 
