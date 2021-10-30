@@ -5,6 +5,7 @@ import LabelInput from '../components/LabelInput'
 import CenterForm from '../components/CenterForm'
 import Button from '../components/Button'
 import { useHistory } from 'react-router'
+import { createMeet } from '../api/Meet'
 
 const nanoid = customAlphabet('0123456789abcdef', 6)
 
@@ -14,18 +15,23 @@ function Create() {
     code: '',
   })
 
-  const history = useHistory()
-
   useEffect(() => {
     setForm((prev) => ({ ...prev, code: nanoid() }))
   }, [])
 
   const onChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    const value = e.target.value.replace(/[^a-z0-9]/g, '')
+
+    setForm({ ...form, [e.target.name]: value })
   }
 
   return (
-    <StyledCenterForm submitButtonText="Create">
+    <StyledCenterForm
+      submitButtonText="Create"
+      onSubmit={() => {
+        createMeet(form.code, form.name)
+      }}
+    >
       <LabelInput
         className="code"
         label="Meeting Code"

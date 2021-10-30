@@ -8,6 +8,7 @@ const { generateToken } = require('../lib/tokens')
  * */
 
 async function authRouter(fastify) {
+  // 회원가입 처리 백엔드 register 생성
   fastify.post('/register', async (request, reply) => {
     const { username, password } = request.body
 
@@ -31,6 +32,8 @@ async function authRouter(fastify) {
     const token = await generateToken({ user }, { expiresIn: '30d' })
     return { ...user, token }
   })
+
+  // /login 처리 백엔드
   fastify.post('/login', async (request, reply) => {
     const { username, password } = request.body
     const user = await db.user.findUnique({ where: { username } })
